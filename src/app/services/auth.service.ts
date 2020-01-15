@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
+  private url = 'http://localhost:8085';
   private apikey = ' AIzaSyBFFT0_Hv4EBqbQ7yiC7irr6fma3spvrJQ';
 
   userToken: string; // Si existe el idToken se guardara aca
@@ -48,23 +48,22 @@ export class AuthService {
   }
 
   nuevoUsuario(usuario: UsuarioModel) {
-    const authData = {
+    const datosUsuario = {
+      name: usuario.name,
+      username: usuario.username,
       email: usuario.email,
       password: usuario.password,
       // o tambien ...usuario
       returnSecureToken: true
     };
 
-    return this.http.post(
-      `${this.url }:signUp?key=${ this.apikey }`,
-      authData
-    ).pipe(
-      map( resp => {
-        console.log('Entro al map');
-        this.guardarToken( resp['idToken'] );
-        return resp;
-      })
-    );
+    return this.http.post(`${this.url}/users`, datosUsuario).pipe(
+			map((resp) => {
+				console.log('Entro al map');
+				//this.guardarToken( resp['idToken'] );
+				return resp;
+			})
+		);
   }
 
   private guardarToken(idToken: string) {

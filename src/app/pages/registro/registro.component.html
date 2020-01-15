@@ -10,47 +10,70 @@
                         Crear nueva cuenta
                     </span>
 
-                    <span *ngIf="f.submitted && f.controls['email'].errors" class="text-danger">El correo es obligatorio</span>
+                    <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger">El nombre es obligatorio</span>
                     <div class="wrap-input100 m-b-16">
-                        <input class="input100"
-                               type="email"
-                               name="email"
-                               [(ngModel)]="usuario.email"
-                               required
-                               email
-                               placeholder="Email">
-
+                      <input
+                        class="input100" 
+                        type="text" 
+                        name="nombre" 
+                        [(ngModel)]="usuario.nombre"
+                        required 
+                        minlength="2"
+                        placeholder="Nombre y apellidos"
+                      >
+                      <span class="focus-input100"></span>
+                    </div>
+                   
+                    <span *ngIf="f.submitted && f.controls['email'].errors" class="text-danger">El usuario es obligatorio</span>
+                    <div class="wrap-input100 m-b-16">
+                        <input 
+                          class="input100"
+                          type="text"
+                          name="username"
+                          [(ngModel)]="usuario.username"
+                          required
+                          placeholder="Usuario"
+                        >
                         <span class="focus-input100"></span>
                     </div>
 
-                    <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger">El nombre es obligatorio</span>
+                    <span *ngIf="f.submitted && f.controls['email'].errors" class="text-danger">El correo es obligatorio</span>
                     <div class="wrap-input100 m-b-16">
-                        <input class="input100"
-                               type="text"
-                               name="nombre"
-                               [(ngModel)]="usuario.nombre"
-                               required
-                               minlength="2"
-                               placeholder="Nombre y apellidos">
-
+                        <input 
+                          class="input100"
+                          type="email"
+                          name="email"
+                          [(ngModel)]="usuario.email"
+                          required
+                          email
+                          placeholder="Email"
+                        >
                         <span class="focus-input100"></span>
                     </div>
 
                     <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger">La contrase&ntilde;a es obligatoria</span>
                     <div class="wrap-input100 m-b-16">
-                        <input class="input100"
-                               type="password"
-                               name="password"
-                               [(ngModel)]="usuario.password"
-                               required
-                               minlength="6"
-                               placeholder="Contrase&ntilde;a">
+                        <input 
+                          class="input100"
+                          type="password"
+                          name="password"
+                          [(ngModel)]="usuario.password"
+                          required
+                          minlength="6"
+                          placeholder="Contrase&ntilde;a"
+                        >
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="flex-sb-m w-full p-t-3 p-b-24">
                         <div class="contact100-form-checkbox">
-                            <input [(ngModel)]="recordarme" class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <input 
+                              [(ngModel)]="recordarme" 
+                              class="input-checkbox100" 
+                              id="ckb1" 
+                              type="checkbox"
+                              name="remember-me"
+                            >
                             <label class="label-checkbox100" for="ckb1">
                                 Recordar mi usuario
                             </label>

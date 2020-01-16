@@ -10,13 +10,13 @@
                         Crear nueva cuenta
                     </span>
 
-                    <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger">El nombre es obligatorio</span>
+                    <span *ngIf="f.submitted && f.controls['name'].errors" class="text-danger">El nombre es obligatorio</span>
                     <div class="wrap-input100 m-b-16">
                       <input
                         class="input100" 
                         type="text" 
-                        name="nombre" 
-                        [(ngModel)]="usuario.nombre"
+                        name="name" 
+                        [(ngModel)]="usuario.name"
                         required 
                         minlength="2"
                         placeholder="Nombre y apellidos"

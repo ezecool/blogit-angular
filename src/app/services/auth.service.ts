@@ -36,12 +36,11 @@ export class AuthService {
     };
 
     return this.http.post(
-      `${this.url}:signInWithPassword?key=${this.apikey}`,
-      authData
-    ).pipe(
+      `${this.url}/users/login`, authData).pipe(
       map(resp => {
-        console.log('Entro al map');
-        this.guardarToken(resp['idToken']);
+        //console.log('Entro al map');
+        // El api devuelve el modelo de usuario, incluido el api_token
+        this.guardarToken(resp['api_token']);
         return resp;
       })
     );
@@ -56,19 +55,18 @@ export class AuthService {
       // o tambien ...usuario
       returnSecureToken: true
     };
-
+    
     return this.http.post(`${this.url}/users`, datosUsuario).pipe(
 			map((resp) => {
-				console.log('Entro al map');
 				//this.guardarToken( resp['idToken'] );
 				return resp;
 			})
 		);
   }
 
-  private guardarToken(idToken: string) {
-    this.userToken = idToken;
-    localStorage.setItem('token', idToken);
+  private guardarToken(api_token: string) {
+    this.userToken = api_token;
+    localStorage.setItem('token', api_token);
 
     let hoy = new Date();
     hoy.setSeconds(3600);
@@ -76,7 +74,7 @@ export class AuthService {
   }
 
   leerToken() {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
     } else {
       this.userToken = '';

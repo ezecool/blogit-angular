@@ -46,15 +46,17 @@ export class LoginComponent implements OnInit {
         }
 
         console.log(resp);
+
         Swal.close();
         this.router.navigateByUrl('/home');
       },
       err => {
-        console.log(err.error.error.message);
+        console.log(err);
+        //console.log(err.error);
         Swal.fire({
           type: 'error',
           title: 'Error de autenticacion',
-          text: err.error.error.message
+          text: err.error.error
         });
       }
     );

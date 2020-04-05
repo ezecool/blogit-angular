@@ -8,16 +8,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { RegistroComponent } from './pages/registro/registro.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { ArticulosComponent } from './components/articulos/articulos.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CategoriasComponent,
+    NavbarComponent,
+    ArticulosComponent
   ],
   imports: [
     BrowserModule,
